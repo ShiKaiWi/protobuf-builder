@@ -1,0 +1,16 @@
+[package]
+name = "protobuf-builder"
+version = "0.1.0"
+authors = ["CeresDB Authors <ceresdb@service.alipay.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+protobuf = "2.20"
+protoc = "2.20"
+protoc-bin-vendored = "2.20"
+
+[dependencies.protoc-grpcio]
+git = "https://github.com/CeresDB/protoc-grpcio.git"
+rev = "fe9664cf003c908528f940d003a9c3e90e522658"

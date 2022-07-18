@@ -119,7 +119,7 @@ impl Builder {
 
     /// Finds proto files to operate on in the `proto_dir` directory.
     pub fn search_dir_for_protos(&mut self, proto_dir: &str) -> &mut Self {
-        self.files = fs::read_dir(proto_dir)
+        for file in fs::read_dir(proto_dir)
             .expect("Couldn't read proto directory")
             .filter_map(|e| {
                 let e = e.expect("Couldn't list file");
@@ -132,7 +132,10 @@ impl Builder {
                     Some(format!("{}/{}", proto_dir, e.file_name().to_string_lossy()))
                 }
             })
-            .collect();
+        {
+            self.files.push(file);
+        }
+
         self
     }
 }
